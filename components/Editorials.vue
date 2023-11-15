@@ -21,13 +21,13 @@ console.log(products);
 <template>
     <div class="w-full text-center">
         <div v-for="product in products">
-            <div v-if="product.category === 'NEW ARRIVALS'">
+            <div v-if="product.category === 'EDITORIALS'">
                 <p class="font-semibold">{{ product.category }}</p>
                 <p>{{ product.description }}</p>
             </div>
-            <div class="flex text-left">
+            <div class="flex items-center">
                 <div v-for="productItem in product.items" class="flex items-center justify-center mx-4">
-                    <div v-if="(product.category === 'NEW ARRIVALS')">
+                    <div v-if="(product.category === 'EDITORIALS')">
                         <img :src="`images/${productItem.image}`" />
                         <p>{{ productItem.itemDesc === "No Description" ? "" : productItem.itemDesc }}</p>
                     </div>

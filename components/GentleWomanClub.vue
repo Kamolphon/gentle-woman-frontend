@@ -28,7 +28,7 @@ console.log(products);
                     <div class="mx-4"> 
                         <img :src="`images/${product.items[0].image}`" />
                     </div>
-                    <div class="mx-4 "> 
+                    <div class="mx-4 mb-0 grid grid-rows-2 space-y-8"> 
                         <img :src="`images/${product.items[1].image}`" />
                         <img :src="`images/${product.items[2].image}`" />
                     </div>
