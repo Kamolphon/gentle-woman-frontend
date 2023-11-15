@@ -1,11 +1,11 @@
 <script setup>
 import { getProducts } from "../composable/getProducts"
 import Navbar from "~/components/Navbar/Navbar.vue";
-import ProductList from "../components/ProductList"
 import NewArrivalsVue from "~/components/NewArrivals.vue";
 import GentleWomanClub from "~/components/GentleWomanClub.vue";
 import Footer from "~/components/Footer/Footer.vue";
 import Editorials from "~/components/Editorials.vue";
+import BackToTopBTN from "~/components/BackToTopBTN.vue";
 const products = await getProducts()
 products.map(element => {
     console.log(element);
@@ -20,6 +20,7 @@ products.map(element => {
             <GentleWomanClub :productForSell="product.productForSell"/>
             <Editorials :productForSell="product.productForSell"/>
         </div>
+        <BackToTopBTN/>
         <Footer/>
     </div>
 </template>

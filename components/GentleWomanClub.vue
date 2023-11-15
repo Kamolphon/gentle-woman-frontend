@@ -19,7 +19,7 @@ for (const product of products) {
 console.log(products);
 </script>
 <template>
-    <div class="w-full text-center">
+    <div id="GENTLEWOMAN CLUB" class="w-full text-center">
         <div v-for="product in products">
             <div v-if="product.category === 'GENTLEWOMAN CLUB'">
                 <p class="font-semibold">{{ product.category }}</p>
