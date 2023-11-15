@@ -24,18 +24,17 @@ console.log(products);
             <div v-if="product.category === 'GENTLEWOMAN CLUB'">
                 <p class="font-semibold">{{ product.category }}</p>
                 <p>{{ product.description }}</p>
-            </div>
-            <div>
-                <div v-for="productItem in product.items">
-                    <div class="flex items-center justify-center mx-4"
-                        v-if="(product.category === 'GENTLEWOMAN CLUB' && productItem.itemDesc === 'No Description')">
-                        <div>
-                            <img :src="`images/${productItem.image}`" />
-                        </div>
+                <div class="flex w-full h-full items-center">
+                    <div class="mx-4"> 
+                        <img :src="`images/${product.items[0].image}`" />
+                    </div>
+                    <div class="mx-4 "> 
+                        <img :src="`images/${product.items[1].image}`" />
+                        <img :src="`images/${product.items[2].image}`" />
                     </div>
                 </div>
             </div>
-            <div class="flex items-center">
+            <div class="flex items-center w-full">
                 <div v-for="productItem in product.items">
                     <div class="flex items-center justify-center mx-4"
                         v-if="(product.category === 'GENTLEWOMAN CLUB' && productItem.itemDesc !== 'No Description')">
