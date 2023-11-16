@@ -1,20 +1,14 @@
 <script setup>
-import { ref } from "vue"
+import { ref, computed } from "vue"
 
 const props = defineProps({
     productForSell: {
-        type: Object,
+        type: Array,
         required: true
     }
 })
 
-const products = props.productForSell.map(e => e)
-for (const product of products) {
-    console.log(product);
-    for (const productItem of product.items) {
-        console.log(productItem);
-    }
-}
+// const gentleWomanClub  = computed(()=>)
 
 console.log(products);
 </script>
