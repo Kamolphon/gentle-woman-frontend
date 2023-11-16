@@ -37,9 +37,17 @@ const currentItemIndex = ref(0);
 
 onMounted(() => {
   setInterval(() => {
-    currentItemIndex.value = (currentItemIndex.value + 1) % 3; // Assuming 3 items per product
-  }, 3000); // Change 3000 to the desired duration in milliseconds
+    currentItemIndex.value = (currentItemIndex.value + 1) % 3; 
+  }, 3000); 
 });
+
+// 0 % 3 = 0
+// 1 % 3 = 1
+// 2 % 3 = 2
+// 3 % 3 = 0
+// 4 % 3 = 1
+// 5 % 3 = 2
+// 6 % 3 = 0
 </script>
   
 <style scoped>
