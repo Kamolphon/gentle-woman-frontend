@@ -1,17 +1,5 @@
 <script setup>
 
-// function handleScroll() {
-//     if (window.scrollY > 100) {
-//         setBackToTopVisible(true);
-//     } else {
-//         setBackToTopVisible(false);
-//     }
-//     window.addEventListener('scroll', handleScroll);
-// return () => {
-//     window.removeEventListener('scroll', handleScroll);
-// };
-// }
-
 const scrollToTop = () => {
     window.scrollTo({
         top: 0,
