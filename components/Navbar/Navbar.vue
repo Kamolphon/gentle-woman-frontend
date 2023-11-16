@@ -3,10 +3,10 @@
 </script>
 <template>
     <div class="navbar absolute flex items-center mt-6 font-semibold">
-        <img class="navdetail" src="../../public/icons/basket.png" width="40px" height="40px"/>
-        <a href="#NEW ARRIVALS" class="navdetail">NEW ARRIVALS</a>
-        <a href="#GENTLEWOMAN CLUB" class="navdetail">GENTLEWOMAN CLUB</a>
-        <a href="#EDITORIALS" class="navdetail">EDITORIALS</a>
+        <img class="navdetail md:w-10 w-5 md:ml-10" src="../../public/icons/basket.png"/>
+        <a href="#NEW ARRIVALS" class="navdetail text-xs md:text-base md:ml-5">NEW ARRIVALS</a>
+        <a href="#GENTLEWOMAN CLUB" class="navdetail text-xs md:text-base md:ml-5">GENTLEWOMAN CLUB</a>
+        <a href="#EDITORIALS" class="navdetail text-xs md:text-base md:ml-5">EDITORIALS</a>
     </div>
 </template>
 <style scoped>
@@ -15,11 +15,11 @@
     line-height: 24px;
     letter-spacing: 0em;
     text-align: left;
-    margin-left: 40px;
+    margin-left: 10px;
 
 }
 
 .navdetail{
-    margin-right: 20px;
+    margin-right: 10px;
 }
 </style>

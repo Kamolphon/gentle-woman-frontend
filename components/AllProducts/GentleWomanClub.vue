@@ -1,5 +1,6 @@
 <script setup>
 import { ref, computed } from "vue"
+import ItemDetail from "../ItemDetail.vue";
 
 const props = defineProps({
     productForSell: {
@@ -8,14 +9,15 @@ const props = defineProps({
     }
 })
 
-// const gentleWomanClub  = computed(()=>)
+const gentleWomanClubProducts  = computed(()=>{
+    return props.productForSell.filter(product => product.category === 'GENTLEWOMAN CLUB')
+})
 
-console.log(products);
 </script>
 <template>
     <div id="GENTLEWOMAN CLUB" class="w-full text-center">
-        <div v-for="product in products" class="mx-4">
-            <div v-if="product.category === 'GENTLEWOMAN CLUB'">
+        <div v-for="product in gentleWomanClubProducts">
+            <div class="">
                 <p class="font-semibold">{{ product.category }}</p>
                 <p>{{ product.description }}</p>
                     <div class="flex w-full h-full justify-between space-x-8 mb-5">
@@ -28,13 +30,13 @@ console.log(products);
                         </div>
                     </div>
             </div>
-            <div class="flex items-center w-full">
+            <div class="flex w-full text-left">
                 <div v-for="productItem in product.items">
-                    <div class="flex items-center justify-center mx-4"
-                        v-if="(product.category === 'GENTLEWOMAN CLUB' && productItem.itemDesc !== 'No Description')">
+                    <div class="flex"
+                        v-if="productItem.itemDesc !== 'No Description'">
                         <div>
                             <img :src="`images/${productItem.image}`" />
-                            <p>{{ productItem.itemDesc }}</p>
+                            <ItemDetail :productname="productItem.itemDesc" :allsize="productItem.allSize" :price="productItem.price"/>
                         </div>
                     </div>
                 </div>

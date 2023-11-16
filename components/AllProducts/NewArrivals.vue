@@ -3,33 +3,29 @@ import { ref } from "vue"
 
 const props = defineProps({
     productForSell: {
-        type: Object,
+        type: Array,
         required: true
     }
 })
 
-const products = props.productForSell.map(e => e)
-for (const product of products) {
-    console.log(product);
-    for (const productItem of product.items) {
-        console.log(productItem);
-    }
-}
+const newArraivalsProducts = computed(()=>{
+    return props.productForSell.filter(product => product.category === 'NEW ARRIVALS')
+})
 
-console.log(products);
+
 </script>
 <template>
     <div id="NEW ARRIVALS" class="w-full text-center">
-        <div v-for="product in products">
-            <div v-if="product.category === 'NEW ARRIVALS'">
+        <div v-for="product in newArraivalsProducts">
+            <div>
                 <p class="font-semibold">{{ product.category }}</p>
                 <p>{{ product.description }}</p>
             </div>
             <div class="flex text-left">
-                <div v-for="productItem in product.items" class="flex items-center justify-center mx-4">
-                    <div v-if="(product.category === 'NEW ARRIVALS')">
+                <div v-for="productItem in product.items" class="flex justify-center">
+                    <div>
                         <img :src="`images/${productItem.image}`" />
-                        <p>{{ productItem.itemDesc === "No Description" ? "" : productItem.itemDesc }}</p>
+                        <ItemDetail :productname="productItem.itemDesc" :allsize="productItem.allSize" :price="productItem.price"/>
                     </div>
                 </div>
             </div>
