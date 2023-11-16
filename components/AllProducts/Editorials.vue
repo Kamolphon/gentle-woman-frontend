@@ -1,39 +1,44 @@
 <script setup>
-import { ref } from "vue"
-
-const props = defineProps({
+  import { ref, onMounted, computed } from 'vue';
+  
+  const props = defineProps({
     productForSell: {
-        type: Object,
-        required: true
+      type: Array,
+      required: true
     }
-})
-
-const products = props.productForSell.map(e => e)
-for (const product of products) {
-    console.log(product);
-    for (const productItem of product.items) {
-        console.log(productItem);
-    }
-}
-
-console.log(products);
-</script>
+  });
+  
+  const editorialProducts = computed(() => {
+    return props.productForSell.filter(product => product.category === 'EDITORIALS');
+  });
+  
+  const currentItemIndex = ref(0);
+  
+  onMounted(() => {
+    setInterval(() => {
+      currentItemIndex.value = (currentItemIndex.value + 1) % 3; // Assuming 3 items per product
+    }, 3000); // Change 3000 to the desired duration in milliseconds
+  });
+  </script>
 <template>
     <div id="EDITORIALS" class="w-full text-center">
-        <div v-for="product in products">
-            <div v-if="product.category === 'EDITORIALS'">
-                <p class="font-semibold">{{ product.category }}</p>
-                <p>{{ product.description }}</p>
-            </div>
-            <div class="flex items-center">
-                <div v-for="productItem in product.items" class="flex items-center justify-center mx-4">
-                    <div v-if="(product.category === 'EDITORIALS')">
-                        <img :src="`images/${productItem.image}`" />
-                        <p>{{ productItem.itemDesc === "No Description" ? "" : productItem.itemDesc }}</p>
-                    </div>
-                </div>
-            </div>
+      <div v-for="product in editorialProducts" :key="product.id">
+        <div>
+          <p class="font-semibold">{{ product.category }}</p>
+          <p>{{ product.description }}</p>
         </div>
+        <div class="flex items-center">
+          <div v-for="(productItem, index) in product.items" :key="index" class="flex items-center justify-center mx-4">
+            <div v-if="index === currentItemIndex">
+              <img :src="`images/${productItem.image}`" />
+              <p>{{ productItem.itemDesc === 'No Description' ? '' : productItem.itemDesc }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-</template>
-<style scoped></style>
+  </template>
+  
+  
+  <style scoped></style>
+  
