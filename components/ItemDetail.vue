@@ -9,9 +9,6 @@ const props = defineProps({
     },
     price: {
         type: Number
-    },
-    stock: {
-        type: Number
     }
 })
 
@@ -25,15 +22,18 @@ console.log(props.price);
         <h1 class="font-semibold">{{ props.productname }}</h1>
         <div class="flex flex-row justify-between text-center">
             <div class="space-x-2">
-                <button class="w-6 border border-black" v-for="size in allsize">
+                <button :class="{
+                    'w-6 border border-black': size.stock > 0,
+                    'w-6 border border-gray-400 text-gray-400 cursor-not-allowed': size.stock === 0
+                }" v-for="size in allsize">
                     <div>{{ size.size }}</div>
                 </button>
             </div>
             <p class="font-semibold">{{ props.price.toLocaleString('en-US') }}</p>
         </div>
         <div class="flex justify-between space-x-8">
-            <button class="w-1/2 py-0.5 border border-black">{{"ADD TO BAG".toUpperCase()}}</button>
-            <button class="w-1/2 py-0.5 bg-black text-white">{{"BUY NOW".toUpperCase()}}</button>
+            <button class="w-1/2 py-0.5 border border-black">{{ "ADD TO BAG".toUpperCase() }}</button>
+            <button class="w-1/2 py-0.5 bg-black text-white">{{ "BUY NOW".toUpperCase() }}</button>
         </div>
     </div>
 </template>
