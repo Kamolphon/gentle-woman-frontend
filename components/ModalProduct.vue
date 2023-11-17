@@ -42,7 +42,7 @@ watchEffect(() => {
     }
     countProduct.value
     codeDiscount.value
-    if (countProduct.value || codeDiscount.value === "") {
+    if (countProduct.value || !codeDiscount.value) {
         howMuchDiscount()
     }
 })
