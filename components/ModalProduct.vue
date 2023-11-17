@@ -27,25 +27,7 @@ for (const product of allProducts) {
     }
 }
 
-const howMuchDiscount = (code, currentPrice) => {
-    // if (code === 'GW20P') {
-    //     countPrice.value = (currentPrice * 0.8)
-    //     discountPrice.value = (currentPrice * 0.2)
-    //     disableApplyButton.value = true
-    // } else if (code === 'GW30P') {
-    //     countPrice.value = (currentPrice * 0.7)
-    //     discountPrice.value = (currentPrice * 0.3)
-    //     disableApplyButton.value = true
-    // } else if (code === 'GW65P') {
-    //     countPrice.value = (currentPrice * 0.35)
-    //     discountPrice.value = (currentPrice * 0.65)
-    //     disableApplyButton.value = true
-    // } else {
-    //     countPrice.value = targetProduct.value?.price * countProduct.value
-    //     discountPrice.value = 0
-    //     disableApplyButton.value = false
-    // }
-
+const howMuchDiscount = (currentPrice) => {
     const targetDiscount = discountCodeArr.value.find((code) => code.code === codeDiscount.value)
     if (targetDiscount) {
         countPrice.value = ((100 - targetDiscount.discountPercent)/100)*currentPrice
@@ -115,7 +97,7 @@ const decreaseProduct = () => {
                         <div class="flex items-end space-x-2">
                             <input v-model.trim="codeDiscount" placeholder="DISCOUNT CODE" type="text"
                                 class="border border-b-black border-t-white border-x-white w-full" />
-                            <button :disabled="disableApplyButton" :class="disableApplyButton ? 'cursor-not-allowed border-gray-400 text-gray-400':'border-black'" class="border w-1/5" @click="howMuchDiscount(codeDiscount,countPrice)">
+                            <button :disabled="disableApplyButton" :class="disableApplyButton ? 'cursor-not-allowed border-gray-400 text-gray-400':'border-black'" class="border w-1/5" @click="howMuchDiscount(countPrice)">
                                 {{ "apply".toUpperCase() }}
                             </button>
                         </div>
