@@ -25,7 +25,7 @@ const newArraivalsProducts = computed(()=>{
                 <div v-for="productItem in product.items" class="flex justify-center w-full">
                     <div>
                         <img :src="`images/${productItem.image}`" />
-                        <ItemDetail :productname="productItem.itemDesc" :allsize="productItem.allSize" :price="productItem.price"/>
+                        <ItemDetail :productId="productItem.productId" :productname="productItem.itemDesc" :allsize="productItem.allSize" :price="productItem.price"/>
                     </div>
                 </div>
             </div>

@@ -36,7 +36,7 @@ const gentleWomanClubProducts  = computed(()=>{
                         v-if="productItem.itemDesc !== 'No Description'">
                         <div>
                             <img :src="`images/${productItem.image}`" />
-                            <ItemDetail :productname="productItem.itemDesc" :allsize="productItem.allSize" :price="productItem.price"/>
+                            <ItemDetail :productId="productItem.productId" :productname="productItem.itemDesc" :allsize="productItem.allSize" :price="productItem.price"/>
                         </div>
                     </div>
                 </div>

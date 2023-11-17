@@ -6,10 +6,18 @@ import GentleWomanClub from "~/components/AllProducts/GentleWomanClub.vue";
 import Footer from "~/components/Footer/Footer.vue";
 import Editorials from "~/components/AllProducts/Editorials.vue";
 import BackToTopBTN from "~/components/BackToTopBTN.vue";
+import ModalProduct from "~/components/ModalProduct.vue";
 const products = await getProducts()
-products.map(element => {
-    console.log(element);
-});
+const allProductItems = []
+
+for (const product of products) {
+    for (const category of product.productForSell) {
+        for (const item of category.items) {
+            allProductItems.push(item)
+        }
+    }
+}
+
 </script>
 <template>
     <div class="w-full">
@@ -22,6 +30,7 @@ products.map(element => {
         </div>
         <BackToTopBTN/>
         <Footer/>
+        <ModalProduct :productItems="allProductItems" v-show="false"/>
     </div>
 </template>
 <style scoped></style>
