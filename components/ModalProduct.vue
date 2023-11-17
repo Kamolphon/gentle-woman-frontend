@@ -3,6 +3,8 @@ import { getProducts } from '~/composable/getProducts';
 
 const allProducts = await getProducts()
 const codeDiscount = ref("")
+const disableApplyButton = ref(false)
+const discountPrice = ref(0)
 const targetProduct = ref()
 const countProduct = ref(1)
 const countPrice = ref()
@@ -23,13 +25,21 @@ for (const product of allProducts) {
 
 const howMuchDiscount = (code, currentPrice) => {
     if (code === 'GW20P') {
-        countPrice.value = (currentPrice*0.8)
+        countPrice.value = (currentPrice * 0.8)
+        discountPrice.value = (currentPrice * 0.2)
+        disableApplyButton.value = true
     } else if (code === 'GW30P') {
-        countPrice.value = (currentPrice*0.7)
+        countPrice.value = (currentPrice * 0.7)
+        discountPrice.value = (currentPrice * 0.3)
+        disableApplyButton.value = true
     } else if (code === 'GW65P') {
-        countPrice.value = (currentPrice*0.35)
+        countPrice.value = (currentPrice * 0.35)
+        discountPrice.value = (currentPrice * 0.65)
+        disableApplyButton.value = true
     } else {
-        countPrice.value = targetProduct.value?.price*countProduct.value
+        countPrice.value = targetProduct.value?.price * countProduct.value
+        discountPrice.value = 0
+        disableApplyButton.value = false
     }
 }
 
@@ -41,9 +51,9 @@ watchEffect(() => {
         targetProduct.value = allProductItems.find((product) => product.productId === props.targetId)
     }
     countProduct.value
-    codeDiscount.value
-    if (countProduct.value || !codeDiscount.value) {
-        howMuchDiscount()
+    if (countProduct.value) {
+        howMuchDiscount(codeDiscount.value, targetProduct.value?.price*countProduct.value)
+        console.log(codeDiscount.value);
     }
 })
 
@@ -55,7 +65,7 @@ const increaseProduct = () => {
 const decreaseProduct = () => {
     if (countProduct.value !== 0) {
         countProduct.value -= 1
-    } else if (countProduct.value <= 0) {
+    } else if (countProduct.value === 0) {
         countProduct.value = 0
     }
 }
@@ -91,7 +101,7 @@ const decreaseProduct = () => {
                         <div class="flex items-end space-x-2">
                             <input v-model.trim="codeDiscount" placeholder="DISCOUNT CODE" type="text"
                                 class="border border-b-black border-t-white border-x-white w-full" />
-                            <button @click="howMuchDiscount(codeDiscount, countPrice)" class="border border-black w-1/5">
+                            <button :disabled="disableApplyButton" :class="disableApplyButton ? 'cursor-not-allowed border-gray-400 text-gray-400':'border-black'" class="border w-1/5" @click="howMuchDiscount(codeDiscount,countPrice)">
                                 {{ "apply".toUpperCase() }}
                             </button>
                         </div>
@@ -102,7 +112,7 @@ const decreaseProduct = () => {
                             </div>
                             <div class="flex justify-between">
                                 <p>DISCOUNT</p>
-                                <p>100 THB</p>
+                                <p>{{ discountPrice }} THB</p>
                             </div>
                             <div class="flex justify-between">
                                 <p>SHIPPING FEE</p>
