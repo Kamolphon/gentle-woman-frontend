@@ -50,12 +50,10 @@ const buyProduct = (id) => {
             </div>
             <div  class="flex justify-between md:space-x-8 space-x-1 text-xs md:text-base">
                 <button class="md:w-1/2 py-0.5 border border-black">{{ "ADD TO BAG".toUpperCase() }}</button>
-                {{ props.productId }}
                 <button :id="props.productId"  @click="buyProduct($event.currentTarget.id)" class="md:w-1/2 py-0.5 bg-black text-white">{{ "BUY NOW".toUpperCase()
                 }}</button>
             </div>
-            <ModalProduct :targetId="Number(productId)" @toggleModal="openModalProduct" v-show="isOpenModal" />
         </div>
-       
+        <ModalProduct :targetId="Number(productId)" @toggleModal="openModalProduct" v-show="isOpenModal" />
 </template>
 <style scoped></style>

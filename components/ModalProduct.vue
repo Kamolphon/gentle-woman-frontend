@@ -39,7 +39,8 @@ const emits = defineEmits(['toggleModal'])
                     class="relative w-96 h-96 mx-3 md-size overflow-y-auto bg-white text-left shadow-xl transition-all sm:w-full sm:max-w-lg">
                     <div class="mx-8 mt-5 flex flex-col md:space-y-10 space-y-5">
                         <div class="flex justify-center items-center">
-                            <h1 class="">SHOPPING BAG</h1>
+                                <h1>SHOPPING BAG</h1>
+                                <button class="absolute right-3 text-2xl" @click="$emit('toggleModal')">X</button>
                         </div>
                         <div class="flex space-x-4">
                             <img style="width: 140px; height: 210px;" :src="`images/${targetProduct?.image}`" />
