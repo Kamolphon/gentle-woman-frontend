@@ -21,13 +21,13 @@ for (const product of allProducts) {
     }
 }
 
-const howMuchDiscount = (code) => {
+const howMuchDiscount = (code, currentPrice) => {
     if (code === 'GW20P') {
-        countPrice.value = (targetProduct.value?.price * 0.8)
+        countPrice.value = (currentPrice*0.8)
     } else if (code === 'GW30P') {
-        countPrice.value = (targetProduct.value?.price * 0.7)
+        countPrice.value = (currentPrice*0.7)
     } else if (code === 'GW65P') {
-        countPrice.value = (targetProduct.value?.price * 0.35)
+        countPrice.value = (currentPrice*0.35)
     } else {
         countPrice.value = targetProduct.value?.price*countProduct.value
     }
@@ -41,7 +41,8 @@ watchEffect(() => {
         targetProduct.value = allProductItems.find((product) => product.productId === props.targetId)
     }
     countProduct.value
-    if (countProduct.value) {
+    codeDiscount.value
+    if (countProduct.value || codeDiscount.value === "") {
         howMuchDiscount()
     }
 })
@@ -90,13 +91,13 @@ const decreaseProduct = () => {
                         <div class="flex items-end space-x-2">
                             <input v-model.trim="codeDiscount" placeholder="DISCOUNT CODE" type="text"
                                 class="border border-b-black border-t-white border-x-white w-full" />
-                            <button @click="howMuchDiscount(codeDiscount)" class="border border-black w-1/5">
+                            <button @click="howMuchDiscount(codeDiscount, countPrice)" class="border border-black w-1/5">
                                 {{ "apply".toUpperCase() }}
                             </button>
                         </div>
                         <div>
                             <div class="flex justify-between">
-                                <p>1 ITEM</p>
+                                <p>{{ countProduct }} ITEM</p>
                                 <p>{{  countPrice?.toLocaleString('en-US') }} THB</p>
                             </div>
                             <div class="flex justify-between">
