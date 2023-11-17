@@ -65,8 +65,8 @@ const increaseProduct = () => {
 const decreaseProduct = () => {
     if (countProduct.value !== 0) {
         countProduct.value -= 1
-    } else if (countProduct.value === 0) {
-        countProduct.value = 0
+    } else if (countProduct.value === 1) {
+        countProduct.value = 1
     }
 }
 
@@ -87,7 +87,7 @@ const decreaseProduct = () => {
                             <div class="flex flex-col justify-between">
                                 <div class="flex space-x-5 items-center">
                                     <p class=" mr-7">{{ targetProduct?.itemDesc }}</p>
-                                    <button :class="countProduct <= 0 ? 'cursor-not-allowed' : ''"
+                                    <button :disabled="countProduct === 1 ? true : false" :class="countProduct === 1 ? 'cursor-not-allowed' : ''"
                                         @click="decreaseProduct">-</button>
                                     <p class="font-semibold text-lg">{{ countProduct }}</p>
                                     <button @click="increaseProduct">+</button>
