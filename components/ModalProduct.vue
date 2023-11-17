@@ -12,6 +12,10 @@ const countPrice = ref()
 const props = defineProps({
     targetId: {
         type: Number
+    },
+
+    targetSize: {
+        type: String,
     }
 })
 
@@ -55,6 +59,8 @@ const totalPrice = computed(()=>{
 
 watchEffect(() => {
     props.targetId
+    props.targetSize
+    console.log(props.targetSize);
     if (props.targetId) {
         targetProduct.value = allProductItems.find((product) => product.productId === props.targetId)
     }
@@ -101,7 +107,7 @@ const decreaseProduct = () => {
                                     <button @click="increaseProduct">+</button>
                                 </div>
                                 <div class="flex justify-between">
-                                    <p>S</p>
+                                        <p>{{ props.targetSize === null || props.targetSize === undefined ? 'S' : props.targetSize }}</p>
                                     <p>{{ targetProduct?.price.toLocaleString('en-US') }} THB</p>
                                 </div>
                             </div>
