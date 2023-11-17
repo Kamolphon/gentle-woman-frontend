@@ -1,11 +1,4 @@
 <script setup>
-const props = defineProps({
-    productItems: {
-        type: Array
-    }
-})
-
-console.log(props.productItems);
 
 const emits = defineEmits(['toggleModal'])
 
