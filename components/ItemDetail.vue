@@ -54,7 +54,7 @@ const buyProduct = (id) => {
                 <button :id="props.productId"  @click="buyProduct($event.currentTarget.id)" class="md:w-1/2 py-0.5 bg-black text-white">{{ "BUY NOW".toUpperCase()
                 }}</button>
             </div>
-            <ModalProduct @toggleModal="openModalProduct" v-show="isOpenModal" />
+            <ModalProduct :targetId="Number(productId)" @toggleModal="openModalProduct" v-show="isOpenModal" />
         </div>
        
 </template>
