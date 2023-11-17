@@ -15,7 +15,11 @@ const props = defineProps({
 })
 
 const allProductItems = []
+const discountCodeArr = ref([])
 for (const product of allProducts) {
+    for (const discount of product.discountCode){
+        discountCodeArr.value.push(discount)
+    }
     for (const category of product.productForSell) {
         for (const item of category.items) {
             allProductItems.push(item)
@@ -24,17 +28,28 @@ for (const product of allProducts) {
 }
 
 const howMuchDiscount = (code, currentPrice) => {
-    if (code === 'GW20P') {
-        countPrice.value = (currentPrice * 0.8)
-        discountPrice.value = (currentPrice * 0.2)
-        disableApplyButton.value = true
-    } else if (code === 'GW30P') {
-        countPrice.value = (currentPrice * 0.7)
-        discountPrice.value = (currentPrice * 0.3)
-        disableApplyButton.value = true
-    } else if (code === 'GW65P') {
-        countPrice.value = (currentPrice * 0.35)
-        discountPrice.value = (currentPrice * 0.65)
+    // if (code === 'GW20P') {
+    //     countPrice.value = (currentPrice * 0.8)
+    //     discountPrice.value = (currentPrice * 0.2)
+    //     disableApplyButton.value = true
+    // } else if (code === 'GW30P') {
+    //     countPrice.value = (currentPrice * 0.7)
+    //     discountPrice.value = (currentPrice * 0.3)
+    //     disableApplyButton.value = true
+    // } else if (code === 'GW65P') {
+    //     countPrice.value = (currentPrice * 0.35)
+    //     discountPrice.value = (currentPrice * 0.65)
+    //     disableApplyButton.value = true
+    // } else {
+    //     countPrice.value = targetProduct.value?.price * countProduct.value
+    //     discountPrice.value = 0
+    //     disableApplyButton.value = false
+    // }
+
+    const targetDiscount = discountCodeArr.value.find((code) => code.code === codeDiscount.value)
+    if (targetDiscount) {
+        countPrice.value = ((100 - targetDiscount.discountPercent)/100)*currentPrice
+        discountPrice.value = (targetDiscount.discountPercent/100)*currentPrice
         disableApplyButton.value = true
     } else {
         countPrice.value = targetProduct.value?.price * countProduct.value
@@ -43,7 +58,6 @@ const howMuchDiscount = (code, currentPrice) => {
     }
 }
 
-console.log();
 
 watchEffect(() => {
     props.targetId
