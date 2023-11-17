@@ -3,6 +3,7 @@ import { getProducts } from '~/composable/getProducts';
 
 const allProducts = await getProducts()
 const codeDiscount = ref("")
+const shippingPrice = ref (50)
 const disableApplyButton = ref(false)
 const discountPrice = ref(0)
 const targetProduct = ref()
@@ -40,6 +41,13 @@ const howMuchDiscount = (currentPrice) => {
     }
 }
 
+const countShippingPrice = () => {
+    if (countPrice.value < 1000 && countPrice.value > 0) {
+        shippingPrice.value = 50
+    } else if (countPrice.value >= 1000){
+        shippingPrice.value = 100
+    }
+}
 
 watchEffect(() => {
     props.targetId
@@ -49,7 +57,7 @@ watchEffect(() => {
     countProduct.value
     if (countProduct.value) {
         howMuchDiscount(targetProduct.value?.price*countProduct.value)
-
+        countShippingPrice()
     }
 })
 
@@ -112,7 +120,7 @@ const decreaseProduct = () => {
                             </div>
                             <div class="flex justify-between">
                                 <p>SHIPPING FEE</p>
-                                <p>100 THB</p>
+                                <p>{{ shippingPrice }} THB</p>
                             </div>
                         </div>
                         <div class="flex pt-5 justify-between font-bold text-xl">
