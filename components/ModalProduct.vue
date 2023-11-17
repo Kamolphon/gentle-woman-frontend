@@ -2,8 +2,9 @@
 import { getProducts } from '~/composable/getProducts';
 
 const allProducts = await getProducts()
-
+const codeDiscount = ref("")
 const targetProduct = ref()
+const countProduct = ref(1)
 const props = defineProps({
     targetId: {
         type: Number
@@ -30,6 +31,22 @@ watchEffect(() => {
 
 const emits = defineEmits(['toggleModal'])
 
+const increaseProduct = () => {
+    countProduct.value += 1
+}
+
+const decreaseProduct = () => {
+    if (countProduct.value !== 0) {
+        countProduct.value -= 1
+    }else if(countProduct.value <= 0) {
+        countProduct.value = 0
+    }
+    
+}
+// const HowMuchDiscountPercent = () {
+
+// }
+
 </script>
 <template>
     <div class="relative z-10" aria-labelledby="modal-title" role="dialog" aria-modal="true">
@@ -47,9 +64,9 @@ const emits = defineEmits(['toggleModal'])
                             <div class="flex flex-col justify-between">
                                 <div class="flex space-x-5 items-center">
                                     <p class=" mr-7">{{ targetProduct?.itemDesc }}</p>
-                                    <button>-</button>
-                                    <p class="font-semibold text-lg">{{ 1 }}</p>
-                                    <button>+</button>
+                                    <button :class="countProduct <= 0 ? 'cursor-not-allowed': '' " @click="decreaseProduct">-</button>
+                                    <p class="font-semibold text-lg">{{ countProduct }}</p>
+                                    <button @click="increaseProduct">+</button>
                                 </div>
                                 <div class="flex justify-between">
                                     <p>S</p>
@@ -58,7 +75,7 @@ const emits = defineEmits(['toggleModal'])
                             </div>
                         </div>
                         <div class="flex items-end space-x-2">
-                            <input placeholder="DISCOUNT CODE" type="text"
+                            <input v-model.trim="codeDiscount" placeholder="DISCOUNT CODE" type="text"
                                 class="border border-b-black border-t-white border-x-white w-full" />
                             <button class="border border-black w-1/5">
                                 {{ "apply".toUpperCase() }}
