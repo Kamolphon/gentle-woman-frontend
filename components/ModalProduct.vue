@@ -5,6 +5,7 @@ const allProducts = await getProducts()
 const codeDiscount = ref("")
 const targetProduct = ref()
 const countProduct = ref(1)
+const countPrice = ref()
 const props = defineProps({
     targetId: {
         type: Number
@@ -20,17 +21,32 @@ for (const product of allProducts) {
     }
 }
 
+const howMuchDiscount = (code) => {
+    if (code === 'GW20P') {
+        countPrice.value = (targetProduct.value?.price * 0.8)
+    } else if (code === 'GW30P') {
+        countPrice.value = (targetProduct.value?.price * 0.7)
+    } else if (code === 'GW65P') {
+        countPrice.value = (targetProduct.value?.price * 0.35)
+    } else {
+        countPrice.value = targetProduct.value?.price*countProduct.value
+    }
+}
+
+console.log();
+
 watchEffect(() => {
     props.targetId
-    console.log(props.targetId);
     if (props.targetId) {
         targetProduct.value = allProductItems.find((product) => product.productId === props.targetId)
     }
-    console.log(targetProduct.value);
+    countProduct.value
+    if (countProduct.value) {
+        howMuchDiscount()
+    }
 })
 
 const emits = defineEmits(['toggleModal'])
-
 const increaseProduct = () => {
     countProduct.value += 1
 }
@@ -38,14 +54,10 @@ const increaseProduct = () => {
 const decreaseProduct = () => {
     if (countProduct.value !== 0) {
         countProduct.value -= 1
-    }else if(countProduct.value <= 0) {
+    } else if (countProduct.value <= 0) {
         countProduct.value = 0
     }
-    
 }
-// const HowMuchDiscountPercent = () {
-
-// }
 
 </script>
 <template>
@@ -56,15 +68,16 @@ const decreaseProduct = () => {
                     class="relative w-96 h-96 mx-3 md-size overflow-y-auto bg-white text-left shadow-xl transition-all sm:w-full sm:max-w-lg">
                     <div class="mx-8 mt-5 flex flex-col md:space-y-10 space-y-5">
                         <div class="flex justify-center items-center">
-                                <h1>SHOPPING BAG</h1>
-                                <button class="absolute right-3 text-2xl" @click="$emit('toggleModal')">X</button>
+                            <h1>SHOPPING BAG</h1>
+                            <button class="absolute right-3 text-2xl" @click="$emit('toggleModal')">X</button>
                         </div>
                         <div class="flex space-x-4">
                             <img style="width: 140px; height: 210px;" :src="`images/${targetProduct?.image}`" />
                             <div class="flex flex-col justify-between">
                                 <div class="flex space-x-5 items-center">
                                     <p class=" mr-7">{{ targetProduct?.itemDesc }}</p>
-                                    <button :class="countProduct <= 0 ? 'cursor-not-allowed': '' " @click="decreaseProduct">-</button>
+                                    <button :class="countProduct <= 0 ? 'cursor-not-allowed' : ''"
+                                        @click="decreaseProduct">-</button>
                                     <p class="font-semibold text-lg">{{ countProduct }}</p>
                                     <button @click="increaseProduct">+</button>
                                 </div>
@@ -77,14 +90,14 @@ const decreaseProduct = () => {
                         <div class="flex items-end space-x-2">
                             <input v-model.trim="codeDiscount" placeholder="DISCOUNT CODE" type="text"
                                 class="border border-b-black border-t-white border-x-white w-full" />
-                            <button class="border border-black w-1/5">
+                            <button @click="howMuchDiscount(codeDiscount)" class="border border-black w-1/5">
                                 {{ "apply".toUpperCase() }}
                             </button>
                         </div>
                         <div>
                             <div class="flex justify-between">
                                 <p>1 ITEM</p>
-                                <p>100 THB</p>
+                                <p>{{  countPrice?.toLocaleString('en-US') }} THB</p>
                             </div>
                             <div class="flex justify-between">
                                 <p>DISCOUNT</p>
