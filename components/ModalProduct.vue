@@ -49,6 +49,10 @@ const countShippingPrice = () => {
     }
 }
 
+const totalPrice = computed(()=>{
+    return shippingPrice.value + countPrice.value
+})
+
 watchEffect(() => {
     props.targetId
     if (props.targetId) {
@@ -125,7 +129,7 @@ const decreaseProduct = () => {
                         </div>
                         <div class="flex pt-5 justify-between font-bold text-xl">
                             <p>{{ "total".toUpperCase() }}</p>
-                            <p>100 THB</p>
+                            <p>{{ totalPrice }} THB</p>
                         </div>
                     </div>
                     <div class="sticky md:absolute bottom-0 right-0 bg-black w-full h-9 md:h-12 items-center flex">
