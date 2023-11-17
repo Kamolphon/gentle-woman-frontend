@@ -48,8 +48,8 @@ watchEffect(() => {
     }
     countProduct.value
     if (countProduct.value) {
-        howMuchDiscount(codeDiscount.value, targetProduct.value?.price*countProduct.value)
-        console.log(codeDiscount.value);
+        howMuchDiscount(targetProduct.value?.price*countProduct.value)
+
     }
 })
 
