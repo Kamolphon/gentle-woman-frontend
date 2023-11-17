@@ -6,7 +6,6 @@ import GentleWomanClub from "~/components/AllProducts/GentleWomanClub.vue";
 import Footer from "~/components/Footer/Footer.vue";
 import Editorials from "~/components/AllProducts/Editorials.vue";
 import BackToTopBTN from "~/components/BackToTopBTN.vue";
-import ModalProduct from "~/components/ModalProduct.vue";
 const products = await getProducts()
 
 </script>
