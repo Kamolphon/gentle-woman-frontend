@@ -17,8 +17,11 @@ body {
 /* CSS สำหรับหน้าจอขนาดมากกว่า 1024px */
 @media (min-width: 1024px) {
     .allproduct {
-        padding-top: 30px;
-        padding-bottom: 30px;
+        padding-top: 60px;
+    }
+
+    .description {
+        margin-bottom: 30px;
     }
 
     .gentlewomensell {
@@ -37,8 +40,11 @@ body {
 /* CSS สำหรับหน้าจอขนาดน้อยกว่าหรือเท่ากับ 1024px */
 @media (max-width: 1024px) {
     .allproduct {
-        padding-top: 10px;
-        padding-bottom: 10px;
+        padding-top: 20px;
+    }
+
+    .description {
+        margin-bottom: 10px;
     }
 
     .gentlewomensell,
@@ -48,15 +54,21 @@ body {
         padding-right: 5px;
     }
 
-    .description {
-        font-size: 8px;
-    }
 }
 
 
 @media (max-width: 768px) {
 
-    .description {
-        font-size: 8px;
+    .description, .descriptionItem, .buybutton, .buttonSize {
+        font-size: 10px;
+    }
+}
+
+
+
+@media (max-width: 543px) {
+    .buttonOfDetail{
+        flex-direction: column;
+        text-align: left;
     }
 }

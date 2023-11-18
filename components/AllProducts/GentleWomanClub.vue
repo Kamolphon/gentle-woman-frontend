@@ -18,8 +18,8 @@ const gentleWomanClubProducts  = computed(()=>{
     <div id="GENTLEWOMAN CLUB" class="allproduct gentlewomensell w-full text-center">
         <div v-for="product in gentleWomanClubProducts">
             <div class="nownotforsell">
-                <p class="font-semibold">{{ product.category }}</p>
-                <p>{{ product.description }}</p>
+                <p class="text-sm md:text-lg category font-medium">{{ product.category }}</p>
+                <p class="md:text-sm description font-extralight">{{ product.description }}</p>
                     <div class="flex w-full h-full justify-between space-x-2.5 lg:space-x-8 mb-5">
                         <div class="">
                             <img :src="`images/${product.items[0].image}`" />

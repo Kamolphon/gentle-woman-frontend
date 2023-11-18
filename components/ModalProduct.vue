@@ -110,7 +110,7 @@ const decreaseProduct = () => {
                                     <p class=" mr-7">{{ targetProduct?.itemDesc }}</p>
                                     <button :disabled="countProduct === 1 ? true : false" :class="countProduct === 1 ? 'cursor-not-allowed' : ''"
                                         @click="decreaseProduct">-</button>
-                                    <p class="font-semibold text-lg">{{ countProduct }}</p>
+                                    <p class="text-lg">{{ countProduct }}</p>
                                     <button @click="increaseProduct">+</button>
                                 </div>
                                 <div class="flex justify-between">

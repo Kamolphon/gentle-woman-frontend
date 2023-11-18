@@ -53,27 +53,27 @@ const selectSize = (size) => {
 
 </script>
 <template>
-    <div class="flex flex-col justify-between md:space-y-4 space-y-1">
+    <div class="flex flex-col justify-between lg:space-y-4 md:space-y-2 space-y-1">
         <img :src="`images/${props.image}`" />
         <div class="overflow-hidden text-ellipsis">
-            <h1 class="font-semibold line-clamp-1 lg:line-clamp-2 text-xs md:text-base">{{ props.productname }}</h1>
+            <h1 class="descriptionItem line-clamp-1 text-xs md:text-sm">{{ props.productname }}</h1>
         </div>
-        <div class="flex flex-row justify-between text-center text-xs md:text-base">
+        <div class="flex buttonOfDetail flex-row justify-between text-center text-sm md:text-lg">
             <div class="md:space-x-2 space-x-1">
                 <button :disabled="size.stock === 0 ? true : false" :class="{
                     'border-black': size.stock > 0,
                     'border border-gray-400 text-gray-400 cursor-not-allowed': size.stock === 0,
                     'border border-black bg-black text-white' : selectedSize === size.size
-                }" class="md:w-6 w-3 border" v-for="size in allsize" :key="size.size" @click="selectSize(size.size)">
+                }" class="md:w-6 w-4 border buttonSize" v-for="size in allsize" :key="size.size" @click="selectSize(size.size)">
                     <div>{{ size.size }}</div>
                 </button>
             </div>
-            <p class="font-semibold">{{ props.price.toLocaleString('en-US') }} THB</p>
+            <p>{{ props.price.toLocaleString('en-US') }} THB</p>
         </div>
-        <div class="flex justify-between md:space-x-4 xl:space-x-8 space-x-1  text-xs md:text-base pt-3">
-            <button class="md:w-1/2 py-0.5 border border-black">{{ "ADD TO BAG".toUpperCase() }}</button>
+        <div class="flex buybutton justify-between md:space-x-4 xl:space-x-8 space-x-1  text-xs md:text-base pt-3">
+            <button class="w-1/2 py-0.5 border border-black">{{ "ADD TO BAG".toUpperCase() }}</button>
             <button :id="props.productId" @click="buyProduct($event.currentTarget.id)"
-                class="md:w-1/2 py-0.5 bg-black text-white">{{ "BUY NOW".toUpperCase()
+                class="w-1/2 py-0.5 bg-black text-white">{{ "BUY NOW".toUpperCase()
                 }}</button>
         </div>
     </div>
