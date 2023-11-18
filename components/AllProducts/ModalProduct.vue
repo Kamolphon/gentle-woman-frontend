@@ -9,7 +9,7 @@ const discountPrice = ref(0)
 const targetProduct = ref()
 const countProduct = ref(1)
 const countPrice = ref()
-const isShowFinalOrder = ref(false)
+
 const props = defineProps({
     targetId: {
         type: Number
@@ -21,9 +21,18 @@ const props = defineProps({
 
     openModalValue: {
         type: Boolean
+    },
+
+    showFinalOrders: {
+        type: Boolean
+    },
+
+    closeFinalOrder:{
+        type: String
     }
 })
 
+const propShowFinalOrders = ref(props.showFinalOrders)
 const allProductItems = []
 const discountCodeArr = ref([])
 for (const product of allProducts) {
@@ -65,6 +74,7 @@ const totalPrice = computed(() => {
 watchEffect(() => {
     props.targetId
     props.targetSize
+    props.showFinalOrders
     if (props.targetId) {
         targetProduct.value = allProductItems.find((product) => product.productId === props.targetId)
     }
@@ -77,6 +87,12 @@ watchEffect(() => {
         countProduct.value = 1
         codeDiscount.value = ""
     }
+    if (props.closeFinalOrder) {
+        propShowFinalOrders.value = props.showFinalOrders
+    }
+
+    console.log(props.showFinalOrders);
+    console.log(propShowFinalOrders.value);
 })
 
 const emits = defineEmits(['toggleModal'])
@@ -93,8 +109,10 @@ const decreaseProduct = () => {
 }
 
 const checkoutButton = () => {
-    isShowFinalOrder.value = true
+    propShowFinalOrders.value = !propShowFinalOrders.value
 }
+
+
 
 </script>
 <template>
@@ -157,14 +175,17 @@ const checkoutButton = () => {
                         <button type="button" @click="checkoutButton" class="w-full text-white">Check out</button>
                     </div>
                 </div>
-                <div v-show="isShowFinalOrder"
+                <div v-show="propShowFinalOrders"
                     class="absolute mx-3 w-96 h-96 md-size overflow-y-auto bg-white text-left shadow-xl transition-all sm:w-full sm:max-w-lg">
                     <div class="px-9 mt-5 flex flex-col md:space-y-10 space-y-5">
                         <div class="flex justify-center items-center">
                             <h1>ORDERS</h1>
                         </div>
                         <div>
-                            <img class="responsive-image flex justify-center" :src="`images/${targetProduct?.image}`" />
+                            <div class="flex justify-between">
+                                <img class="responsive-image flex justify-center" :src="`images/${targetProduct?.image}`" />
+                                <p>{{ props.targetSize }}</p>
+                            </div>
                             <div class="modalText pt-5 flex flex-col justify-between">
                                 <div class="items-baseline">
                                     <div class="flex justify-between">
@@ -181,7 +202,8 @@ const checkoutButton = () => {
 
                     </div>
                     <div class="sticky md:absolute bottom-0 right-0 bg-black w-full h-9 md:h-12 items-center flex">
-                        <button type="button" @click="$emit('toggleModal')" class="w-full text-white">CLOSE</button>
+                        <button type="button" @click="$emit('toggleModal', 'close','closeFinalOrder')"
+                            class="w-full text-white">CLOSE</button>
                     </div>
                 </div>
             </div>

@@ -4,6 +4,8 @@ import ModalProduct from "./ModalProduct.vue";
 const isOpenModal = ref(false)
 const productId = ref(null)
 const selectedSize = ref(null)
+const isShowFinalOrder = ref(false)
+const closeFinalProduct = ref("")
 const props = defineProps({
     productId: {
         type: Number
@@ -24,10 +26,14 @@ const props = defineProps({
 
 console.log(props.image);
 
-const openModalProduct = () => {
+const openModalProduct = (mode,closeFinalOrder) => {
     isOpenModal.value = !isOpenModal.value
-    if (isOpenModal.value === false) {
+    if (mode === 'close' && closeFinalOrder === 'closeFinalOrder') {
         selectedSize.value = null
+        closeFinalProduct.value = 'closeFinalOrder'
+        isShowFinalOrder.value = false
+    }else{
+        closeFinalProduct.value = closeFinalOrder
     }
 }
 
@@ -35,7 +41,7 @@ const buyProduct = (id) => {
     if (selectedSize.value === null || selectedSize.value === undefined) {
         alert("Please select size")
     } else {
-        openModalProduct()
+        openModalProduct('open',"")
         productId.value = id
         console.log(id);
     }
@@ -73,7 +79,7 @@ const selectSize = (size) => {
                 }}</button>
         </div>
     </div>
-    <ModalProduct :openModalValue="isOpenModal" :targetSize="selectedSize" :targetId="Number(productId)" @toggleModal="openModalProduct"
+    <ModalProduct :closeFinalOrder="closeFinalProduct" :showFinalOrders="isShowFinalOrder" :openModalValue="isOpenModal" :targetSize="selectedSize" :targetId="Number(productId)" @toggleModal="openModalProduct('close','closeFinalOrder')"
         v-show="isOpenModal" />
 </template>
 <style scoped></style>
