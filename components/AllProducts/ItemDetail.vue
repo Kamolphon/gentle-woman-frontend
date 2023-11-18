@@ -24,8 +24,6 @@ const props = defineProps({
     }
 })
 
-console.log(props.image);
-
 const openModalProduct = (mode,closeFinalOrder) => {
     isOpenModal.value = !isOpenModal.value
     if (mode === 'close' && closeFinalOrder === 'closeFinalOrder') {
@@ -43,7 +41,6 @@ const buyProduct = (id) => {
     } else {
         openModalProduct('open',"")
         productId.value = id
-        console.log(id);
     }
 }
 

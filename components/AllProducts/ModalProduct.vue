@@ -90,9 +90,6 @@ watchEffect(() => {
     if (props.closeFinalOrder) {
         propShowFinalOrders.value = props.showFinalOrders
     }
-
-    console.log(props.showFinalOrders);
-    console.log(propShowFinalOrders.value);
 })
 
 const emits = defineEmits(['toggleModal'])
