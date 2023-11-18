@@ -19,7 +19,7 @@ const gentleWomanClubProducts  = computed(()=>{
         <div v-for="product in gentleWomanClubProducts">
             <div class="nownotforsell">
                 <p class="text-sm md:text-lg category">{{ product.category }}</p>
-                <p class="md:text-sm description">{{ product.description }}</p>
+                <p class="description">{{ product.description }}</p>
                     <div class="flex w-full h-full justify-between space-x-2.5 lg:space-x-8 mb-5">
                         <div class="">
                             <img :src="`images/${product.items[0].image}`" />
@@ -30,7 +30,7 @@ const gentleWomanClubProducts  = computed(()=>{
                         </div>
                     </div>
             </div>
-            <div class="flex w-full text-left">
+            <div class="flex w-full text-left mt-8 md:mt-12">
                 <div v-for="productItem in product.items">
                     <div class="flex"
                         v-if="productItem.itemDesc !== 'No Description'">

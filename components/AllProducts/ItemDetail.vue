@@ -52,9 +52,9 @@ const selectSize = (size) => {
     <div class="flex flex-col justify-between lg:space-y-4 md:space-y-2 space-y-1">
         <img :src="`images/${props.image}`" />
         <div class="overflow-hidden text-ellipsis">
-            <h1 class="descriptionItem line-clamp-1 text-xs md:text-sm">{{ props.productname }}</h1>
+            <h1 class="descriptionItem line-clamp-1">{{ props.productname }}</h1>
         </div>
-        <div class="flex buttonOfDetail flex-row justify-between text-center text-sm md:text-lg">
+        <div class="flex items-baseline buttonOfDetail flex-row justify-between text-center">
             <div class="md:space-x-2 space-x-1">
                 <button :disabled="size.stock === 0 ? true : false" :class="{
                     'border-black': size.stock > 0,
@@ -64,9 +64,9 @@ const selectSize = (size) => {
                     <div>{{ size.size }}</div>
                 </button>
             </div>
-            <p>{{ props.price.toLocaleString('en-US') }} THB</p>
+            <p class="text-sm md:text-lg">{{ props.price.toLocaleString('en-US') }} THB</p>
         </div>
-        <div class="flex buybutton justify-between md:space-x-4 xl:space-x-8 space-x-1  text-xs md:text-base pt-3">
+        <div class="flex buybutton justify-between md:space-x-4 xl:space-x-8 space-x-1 pt-2 md:pt-0">
             <button class="w-1/2 py-0.5 border border-black">{{ "ADD TO BAG".toUpperCase() }}</button>
             <button :id="props.productId" @click="buyProduct($event.currentTarget.id)"
                 class="w-1/2 py-0.5 bg-black text-white">{{ "BUY NOW".toUpperCase()
