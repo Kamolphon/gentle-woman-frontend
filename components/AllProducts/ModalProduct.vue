@@ -3,7 +3,7 @@ import { getProducts } from '~/composable/getProducts';
 
 const allProducts = await getProducts()
 const codeDiscount = ref("")
-const shippingPrice = ref (50)
+const shippingPrice = ref(50)
 const disableApplyButton = ref(false)
 const discountPrice = ref(0)
 const targetProduct = ref()
@@ -26,7 +26,7 @@ const props = defineProps({
 const allProductItems = []
 const discountCodeArr = ref([])
 for (const product of allProducts) {
-    for (const discount of product.discountCode){
+    for (const discount of product.discountCode) {
         discountCodeArr.value.push(discount)
     }
     for (const category of product.productForSell) {
@@ -39,8 +39,8 @@ for (const product of allProducts) {
 const howMuchDiscount = (currentPrice) => {
     const targetDiscount = discountCodeArr.value.find((code) => code.code === codeDiscount.value)
     if (targetDiscount) {
-        countPrice.value = ((100 - targetDiscount.discountPercent)/100)*currentPrice
-        discountPrice.value = (targetDiscount.discountPercent/100)*currentPrice
+        countPrice.value = ((100 - targetDiscount.discountPercent) / 100) * currentPrice
+        discountPrice.value = (targetDiscount.discountPercent / 100) * currentPrice
         disableApplyButton.value = true
     } else {
         countPrice.value = targetProduct.value?.price * countProduct.value
@@ -52,12 +52,12 @@ const howMuchDiscount = (currentPrice) => {
 const countShippingPrice = () => {
     if (countPrice.value < 1000 && countPrice.value > 0) {
         shippingPrice.value = 50
-    } else if (countPrice.value >= 1000){
+    } else if (countPrice.value >= 1000) {
         shippingPrice.value = 100
     }
 }
 
-const totalPrice = computed(()=>{
+const totalPrice = computed(() => {
     return shippingPrice.value + countPrice.value
 })
 
@@ -69,7 +69,7 @@ watchEffect(() => {
     }
     countProduct.value
     if (countProduct.value) {
-        howMuchDiscount(targetProduct.value?.price*countProduct.value)
+        howMuchDiscount(targetProduct.value?.price * countProduct.value)
         countShippingPrice()
     }
     if (props.openModalValue === false) {
@@ -106,15 +106,15 @@ const decreaseProduct = () => {
                         <div class="flex space-x-4">
                             <img class="responsive-image" :src="`images/${targetProduct?.image}`" />
                             <div class="modalText flex flex-col justify-between">
-                                <div class="flex md:space-x-5 items-baseline">
+                                <div class="flex md:space-x-5 space-x-1 items-baseline">
                                     <p class="mr-7">{{ targetProduct?.itemDesc }}</p>
-                                    <button :disabled="countProduct === 1 ? true : false" :class="countProduct === 1 ? 'cursor-not-allowed' : ''"
+                                    <button class=" text-lg" :disabled="countProduct === 1 ? true : false" :class="countProduct === 1 ? 'cursor-not-allowed' : ''"
                                         @click="decreaseProduct">-</button>
                                     <p class="text-lg font-semibold">{{ countProduct }}</p>
-                                    <button @click="increaseProduct">+</button>
+                                    <button class=" text-lg" @click="increaseProduct">+</button>
                                 </div>
                                 <div class="flex justify-between">
-                                        <p>{{ props.targetSize }}</p>
+                                    <p>{{ props.targetSize }}</p>
                                     <p>{{ targetProduct?.price.toLocaleString('en-US') }} THB</p>
                                 </div>
                             </div>
@@ -122,14 +122,16 @@ const decreaseProduct = () => {
                         <div class="modalText flex items-end space-x-2">
                             <input v-model.trim="codeDiscount" placeholder="DISCOUNT CODE" type="text"
                                 class="border border-b-black border-t-white border-x-white w-full" />
-                            <button :disabled="disableApplyButton" :class="disableApplyButton ? 'cursor-not-allowed border-gray-400 text-gray-400':'border-black'" class="border w-1/5" @click="howMuchDiscount(countPrice)">
+                            <button :disabled="disableApplyButton"
+                                :class="disableApplyButton ? 'cursor-not-allowed border-gray-400 text-gray-400' : 'border-black'"
+                                class="border w-1/5" @click="howMuchDiscount(countPrice)">
                                 {{ "apply".toUpperCase() }}
                             </button>
                         </div>
                         <div class="modalText">
                             <div class="flex justify-between">
                                 <p>{{ countProduct }} ITEM</p>
-                                <p>{{  countPrice?.toLocaleString('en-US') }} THB</p>
+                                <p>{{ countPrice?.toLocaleString('en-US') }} THB</p>
                             </div>
                             <div class="flex justify-between">
                                 <p>DISCOUNT</p>
@@ -163,17 +165,15 @@ const decreaseProduct = () => {
 
 /* เริ่มต้นให้รูปภาพมีขนาด 140x210px */
 .responsive-image {
-  width: 140px;
-  height: 210px;
+    width: 140px;
+    height: 210px;
 }
 
 /* ใช้ media query เพื่อปรับขนาดใหม่เมื่อหน้าจอกว้างกว่า 280px */
 @media (max-width: 317px) {
-  .responsive-image {
-    width: 80px;
-    height: 210px;
-  }
+    .responsive-image {
+        width: 80px;
+        height: 210px;
+    }
 }
-
-
 </style>
