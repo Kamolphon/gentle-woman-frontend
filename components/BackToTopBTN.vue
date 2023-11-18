@@ -9,7 +9,7 @@ const scrollToTop = () => {
 
 </script>
 <template>
-    <div class="fixed right-14 bottom-4">
+    <div class="fixed md:right-14 right-2 bottom-4">
         <button @click="scrollToTop" id="backToTopBtn" class="flex flex-col items-center text-sm md:text-lg space-y-3">
             <img src="icons/arrowup.png" class="w-4" />
             <p class="textAlignVer">Back to top</p>
