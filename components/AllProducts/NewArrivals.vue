@@ -14,7 +14,7 @@ const newArraivalsProducts = computed(()=>{
 
 </script>
 <template>
-    <div id="NEW ARRIVALS" class="allproduct gentlewomensell w-full text-center">
+    <div id="NEW ARRIVALS" class="allproduct gentlewomansell w-full text-center">
         <div v-for="product in newArraivalsProducts">
             <div>
                 <p class="text-sm md:text-lg category">{{ product.category }}</p>
