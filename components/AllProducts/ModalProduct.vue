@@ -1,5 +1,5 @@
 <script setup>
-import { getProducts } from '~/composable/getProducts';
+import { getProducts } from '../../composable/getProducts.js';
 
 const allProducts = await getProducts()
 const codeDiscount = ref("")
