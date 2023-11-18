@@ -46,10 +46,6 @@ const selectSize = (size) => {
     selectedSize.value = size
 }
 
-// console.log(props.productId);
-// console.log(props.productname);
-// console.log(props.allsize);
-// console.log(props.price);
 
 </script>
 <template>

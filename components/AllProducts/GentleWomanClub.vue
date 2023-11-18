@@ -1,6 +1,6 @@
 <script setup>
 import { ref, computed } from "vue"
-import ItemDetail from "../ItemDetail.vue";
+import ItemDetail from "./ItemDetail.vue";
 
 const props = defineProps({
     productForSell: {

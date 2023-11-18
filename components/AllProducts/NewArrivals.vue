@@ -1,6 +1,5 @@
 <script setup>
-import { ref } from "vue"
-
+import ItemDetail from "./ItemDetail.vue";
 const props = defineProps({
     productForSell: {
         type: Array,
