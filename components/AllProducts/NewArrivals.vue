@@ -15,7 +15,7 @@ const newArraivalsProducts = computed(()=>{
 
 </script>
 <template>
-    <div id="NEW ARRIVALS" class="w-full text-center">
+    <div id="NEW ARRIVALS" class="allproduct gentlewomensell w-full text-center">
         <div v-for="product in newArraivalsProducts">
             <div>
                 <p class="font-semibold">{{ product.category }}</p>
@@ -23,9 +23,8 @@ const newArraivalsProducts = computed(()=>{
             </div>
             <div class="flex text-left">
                 <div v-for="productItem in product.items" class="flex justify-center w-full">
-                    <div>
-                        <img :src="`images/${productItem.image}`" />
-                        <ItemDetail :productId="productItem.productId" :productname="productItem.itemDesc" :allsize="productItem.allSize" :price="productItem.price"/>
+                    <div class="productCard">
+                        <ItemDetail :image="productItem.image"  :productId="productItem.productId" :productname="productItem.itemDesc" :allsize="productItem.allSize" :price="productItem.price"/>
                     </div>
                 </div>
             </div>

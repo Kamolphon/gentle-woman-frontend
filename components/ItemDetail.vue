@@ -16,8 +16,13 @@ const props = defineProps({
     },
     price: {
         type: Number
+    },
+    image: {
+        type: String
     }
 })
+
+console.log(props.image);
 
 const openModalProduct = () => {
     isOpenModal.value = !isOpenModal.value
@@ -48,7 +53,8 @@ const selectSize = (size) => {
 
 </script>
 <template>
-    <div class="flex flex-col justify-between md:space-y-5 space-y-2">
+    <div class="flex flex-col justify-between md:space-y-4 space-y-1">
+        <img :src="`images/${props.image}`" />
         <h1 class="font-semibold text-xs md:text-base">{{ props.productname }}</h1>
         <div class="flex flex-row justify-between text-center text-xs md:text-base">
             <div class="md:space-x-2 space-x-1">
@@ -62,7 +68,7 @@ const selectSize = (size) => {
             </div>
             <p class="font-semibold">{{ props.price.toLocaleString('en-US') }} THB</p>
         </div>
-        <div class="flex justify-between md:space-x-4 xl:space-x-8 space-x-1  text-xs md:text-base">
+        <div class="flex justify-between md:space-x-4 xl:space-x-8 space-x-1  text-xs md:text-base pt-3">
             <button class="md:w-1/2 py-0.5 border border-black">{{ "ADD TO BAG".toUpperCase() }}</button>
             <button :id="props.productId" @click="buyProduct($event.currentTarget.id)"
                 class="md:w-1/2 py-0.5 bg-black text-white">{{ "BUY NOW".toUpperCase()

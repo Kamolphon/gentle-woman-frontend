@@ -1,5 +1,5 @@
 <template>
-  <div id="EDITORIALS" class="w-full text-center">
+  <div id="EDITORIALS" class="allproduct w-full text-center">
     <div v-for="product in editorialProducts" :key="product.id">
       <div>
         <p class="font-semibold">{{ product.category }}</p>

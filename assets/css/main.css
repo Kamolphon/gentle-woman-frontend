@@ -2,3 +2,20 @@
 @tailwind components;
 @tailwind utilities;
 
+
+@media (min-width: 768px) {
+    .allproduct {
+        padding-top: 30px;
+        padding-bottom: 30px;
+    }
+    
+    .gentlewomensell {
+        padding-left: 90px;
+        padding-right: 90px;
+    }
+    
+    .productCard, .nownotforsell  {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+}
