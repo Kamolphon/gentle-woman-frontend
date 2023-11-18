@@ -188,9 +188,12 @@ const checkoutButton = () => {
                             </div>
                             <div class="modalText pt-5 flex flex-col justify-between">
                                 <div class="items-baseline">
-                                    <div class="flex justify-between">
+                                    <div class="flex justify-between mb-5">
                                         <p>{{ targetProduct?.itemDesc }}</p>
+                                    </div>
+                                    <div class="flex justify-between">
                                         <p>{{ countProduct.toLocaleString('en-US') }} ITEM</p>
+                                        <p>{{ countPrice?.toLocaleString('en-US') }} THB</p>
                                     </div>
                                     <div class="flex justify-between">
                                         <p>SHIPPING FEE</p>
