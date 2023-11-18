@@ -20,7 +20,7 @@ const gentleWomanClubProducts  = computed(()=>{
             <div class="nownotforsell">
                 <p class="text-sm md:text-lg category">{{ product.category }}</p>
                 <p class="description">{{ product.description }}</p>
-                    <div class="flex w-full h-full justify-between space-x-2.5 lg:space-x-8 mb-5">
+                    <div class="flex w-full h-full justify-between space-x-4 lg:space-x-8 mb-5">
                         <div class="">
                             <img :src="`images/${product.items[0].image}`" />
                         </div>
