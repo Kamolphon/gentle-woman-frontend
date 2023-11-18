@@ -16,6 +16,10 @@ const props = defineProps({
 
     targetSize: {
         type: String,
+    },
+
+    openModalValue: {
+        type: Boolean
     }
 })
 
@@ -60,7 +64,6 @@ const totalPrice = computed(()=>{
 watchEffect(() => {
     props.targetId
     props.targetSize
-    console.log(props.targetSize);
     if (props.targetId) {
         targetProduct.value = allProductItems.find((product) => product.productId === props.targetId)
     }
@@ -68,6 +71,10 @@ watchEffect(() => {
     if (countProduct.value) {
         howMuchDiscount(targetProduct.value?.price*countProduct.value)
         countShippingPrice()
+    }
+    if (props.openModalValue === false) {
+        countProduct.value = 1
+        codeDiscount.value = ""
     }
 })
 
@@ -107,7 +114,7 @@ const decreaseProduct = () => {
                                     <button @click="increaseProduct">+</button>
                                 </div>
                                 <div class="flex justify-between">
-                                        <p>{{ props.targetSize === null || props.targetSize === undefined ? 'S' : props.targetSize }}</p>
+                                        <p>{{ props.targetSize }}</p>
                                     <p>{{ targetProduct?.price.toLocaleString('en-US') }} THB</p>
                                 </div>
                             </div>
