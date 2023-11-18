@@ -2,7 +2,7 @@
 
 </script>
 <template>
-    <div class="navbar font-medium absolute flex items-center mt-2 lg:mt-10">
+    <div class="navbar absolute flex items-center mt-2 lg:mt-10">
         <img class="navdetail md:w-10 w-5 md:ml-10" src="../../public/icons/basket.png"/>
         <a href="#NEW ARRIVALS" class="navdetail text-sm md:text-lg md:ml-5">NEW ARRIVALS</a>
         <a href="#GENTLEWOMAN CLUB" class="navdetail text-sm md:text-lg md:ml-5">GENTLEWOMAN CLUB</a>

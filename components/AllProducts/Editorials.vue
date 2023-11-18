@@ -2,7 +2,7 @@
   <div id="EDITORIALS" class="allproduct w-full text-center">
     <div v-for="product in editorialProducts" :key="product.id">
       <div>
-        <p class="text-sm md:text-lg category font-medium mb-3">{{ product.category }}</p>
+        <p class="text-sm md:text-lg category">{{ product.category }}</p>
         <p class="md:text-sm description">{{ product.description }}</p>
       </div>
       <div v-for="(productItem, index) in product.items" :key="index" class="flex items-center justify-center">
