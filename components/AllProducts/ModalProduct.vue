@@ -27,7 +27,7 @@ const props = defineProps({
         type: Boolean
     },
 
-    closeFinalOrder:{
+    closeFinalOrder: {
         type: String
     }
 })
@@ -192,6 +192,10 @@ const checkoutButton = () => {
                                         <p>{{ targetProduct?.itemDesc }}</p>
                                         <p>{{ countProduct.toLocaleString('en-US') }} ITEM</p>
                                     </div>
+                                    <div class="flex justify-between">
+                                        <p>SHIPPING FEE</p>
+                                        <p>{{ shippingPrice.toLocaleString('en-US') }} THB</p>
+                                    </div>
                                     <div class="flex py-5 justify-between font-semibold text-xl">
                                         <p>{{ "total".toUpperCase() }}</p>
                                         <p>{{ totalPrice.toLocaleString('en-US') }} THB</p>
@@ -202,7 +206,7 @@ const checkoutButton = () => {
 
                     </div>
                     <div class="sticky md:absolute bottom-0 right-0 bg-black w-full h-9 md:h-12 items-center flex">
-                        <button type="button" @click="$emit('toggleModal', 'close','closeFinalOrder')"
+                        <button type="button" @click="$emit('toggleModal', 'close', 'closeFinalOrder')"
                             class="w-full text-white">CLOSE</button>
                     </div>
                 </div>
