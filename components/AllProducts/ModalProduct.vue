@@ -9,6 +9,7 @@ const discountPrice = ref(0)
 const targetProduct = ref()
 const countProduct = ref(1)
 const countPrice = ref()
+const isShowFinalOrder = ref(false)
 const props = defineProps({
     targetId: {
         type: Number
@@ -91,6 +92,10 @@ const decreaseProduct = () => {
     }
 }
 
+const checkoutButton = () => {
+    isShowFinalOrder.value = true
+}
+
 </script>
 <template>
     <div class="relative z-10" aria-labelledby="modal-title" role="dialog" aria-modal="true">
@@ -108,7 +113,8 @@ const decreaseProduct = () => {
                             <div class="modalText flex flex-col justify-between">
                                 <div class="flex md:space-x-5 space-x-1 items-baseline">
                                     <p class="mr-7">{{ targetProduct?.itemDesc }}</p>
-                                    <button class=" text-lg" :disabled="countProduct === 1 ? true : false" :class="countProduct === 1 ? 'cursor-not-allowed' : ''"
+                                    <button class=" text-lg" :disabled="countProduct === 1 ? true : false"
+                                        :class="countProduct === 1 ? 'cursor-not-allowed' : ''"
                                         @click="decreaseProduct">-</button>
                                     <p class="text-lg font-semibold">{{ countProduct }}</p>
                                     <button class=" text-lg" @click="increaseProduct">+</button>
@@ -130,7 +136,7 @@ const decreaseProduct = () => {
                         </div>
                         <div class="modalText">
                             <div class="flex justify-between">
-                                <p>{{ countProduct }} ITEM</p>
+                                <p>{{ countProduct.toLocaleString('en-US') }} ITEM</p>
                                 <p>{{ countPrice?.toLocaleString('en-US') }} THB</p>
                             </div>
                             <div class="flex justify-between">
@@ -148,7 +154,34 @@ const decreaseProduct = () => {
                         </div>
                     </div>
                     <div class="sticky md:absolute bottom-0 right-0 bg-black w-full h-9 md:h-12 items-center flex">
-                        <button type="button" @click="$emit('toggleModal')" class="w-full text-white">Check out</button>
+                        <button type="button" @click="checkoutButton" class="w-full text-white">Check out</button>
+                    </div>
+                </div>
+                <div v-show="isShowFinalOrder"
+                    class="absolute mx-3 w-96 h-96 md-size overflow-y-auto bg-white text-left shadow-xl transition-all sm:w-full sm:max-w-lg">
+                    <div class="px-9 mt-5 flex flex-col md:space-y-10 space-y-5">
+                        <div class="flex justify-center items-center">
+                            <h1>ORDERS</h1>
+                        </div>
+                        <div>
+                            <img class="responsive-image flex justify-center" :src="`images/${targetProduct?.image}`" />
+                            <div class="modalText pt-5 flex flex-col justify-between">
+                                <div class="items-baseline">
+                                    <div class="flex justify-between">
+                                        <p>{{ targetProduct?.itemDesc }}</p>
+                                        <p>{{ countProduct.toLocaleString('en-US') }} ITEM</p>
+                                    </div>
+                                    <div class="flex py-5 justify-between font-semibold text-xl">
+                                        <p>{{ "total".toUpperCase() }}</p>
+                                        <p>{{ totalPrice.toLocaleString('en-US') }} THB</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="sticky md:absolute bottom-0 right-0 bg-black w-full h-9 md:h-12 items-center flex">
+                        <button type="button" @click="$emit('toggleModal')" class="w-full text-white">CLOSE</button>
                     </div>
                 </div>
             </div>
