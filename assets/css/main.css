@@ -15,7 +15,6 @@ body {
     margin-bottom: 12px;
 }
 
-/* CSS สำหรับหน้าจอขนาดมากกว่า 1024px */
 @media (min-width: 1024px) {
     .allproduct {
         padding-top: 60px;
@@ -38,7 +37,6 @@ body {
 
 }
 
-/* CSS สำหรับหน้าจอขนาดน้อยกว่าหรือเท่ากับ 1024px */
 @media (max-width: 1024px) {
     .allproduct {
         padding-top: 20px;
@@ -57,15 +55,12 @@ body {
 
 }
 
-
 @media (max-width: 768px) {
 
     .description, .descriptionItem, .buybutton, .buttonSize {
         font-size: 10px;
     }
 }
-
-
 
 @media (max-width: 543px) {
     .buttonOfDetail{
