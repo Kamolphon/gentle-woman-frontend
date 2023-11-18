@@ -110,7 +110,7 @@ const decreaseProduct = () => {
                                     <p class="mr-7">{{ targetProduct?.itemDesc }}</p>
                                     <button :disabled="countProduct === 1 ? true : false" :class="countProduct === 1 ? 'cursor-not-allowed' : ''"
                                         @click="decreaseProduct">-</button>
-                                    <p class="text-lg">{{ countProduct }}</p>
+                                    <p class="text-lg font-semibold">{{ countProduct }}</p>
                                     <button @click="increaseProduct">+</button>
                                 </div>
                                 <div class="flex justify-between">
@@ -140,7 +140,7 @@ const decreaseProduct = () => {
                                 <p>{{ shippingPrice.toLocaleString('en-US') }} THB</p>
                             </div>
                         </div>
-                        <div class="flex pt-5 justify-between font-bold text-xl">
+                        <div class="flex pt-5 justify-between font-semibold text-xl">
                             <p>{{ "total".toUpperCase() }}</p>
                             <p>{{ totalPrice.toLocaleString('en-US') }} THB</p>
                         </div>
