@@ -11,7 +11,7 @@ const scrollToTop = () => {
 <template>
     <div class="fixed md:right-14 right-2 bottom-4">
         <button @click="scrollToTop" id="backToTopBtn" class="flex flex-col items-center text-sm md:text-lg space-y-3">
-            <img src="icons/arrowup.png" class="w-4" />
+            <img src="../public/icons/arrowup.png" class="w-4" />
             <p class="textAlignVer">Back to top</p>
         </button>
     </div>
