@@ -97,17 +97,17 @@ const decreaseProduct = () => {
         <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity">
             <div class="fixed inset-0 z-10 flex items-center justify-center">
                 <div
-                    class="relative w-96 h-96 mx-3 md-size overflow-y-auto bg-white text-left shadow-xl transition-all sm:w-full sm:max-w-lg">
-                    <div class="mx-8 mt-5 flex flex-col md:space-y-10 space-y-5">
+                    class="relative mx-3 w-96 h-96 md-size overflow-y-auto bg-white text-left shadow-xl transition-all sm:w-full sm:max-w-lg">
+                    <div class="px-9 mt-5 flex flex-col md:space-y-10 space-y-5">
                         <div class="flex justify-center items-center">
                             <h1>SHOPPING BAG</h1>
                             <button class="absolute right-3 text-2xl" @click="$emit('toggleModal')">X</button>
                         </div>
                         <div class="flex space-x-4">
-                            <img style="width: 140px; height: 210px;" :src="`images/${targetProduct?.image}`" />
+                            <img class="responsive-image" :src="`images/${targetProduct?.image}`" />
                             <div class="flex flex-col justify-between">
-                                <div class="flex space-x-5 items-center">
-                                    <p class=" mr-7">{{ targetProduct?.itemDesc }}</p>
+                                <div class="flex md:space-x-5 items-center">
+                                    <p class="mr-7">{{ targetProduct?.itemDesc }}</p>
                                     <button :disabled="countProduct === 1 ? true : false" :class="countProduct === 1 ? 'cursor-not-allowed' : ''"
                                         @click="decreaseProduct">-</button>
                                     <p class="text-lg">{{ countProduct }}</p>
@@ -160,4 +160,20 @@ const decreaseProduct = () => {
         height: 658px;
     }
 }
+
+/* เริ่มต้นให้รูปภาพมีขนาด 140x210px */
+.responsive-image {
+  width: 140px;
+  height: 210px;
+}
+
+/* ใช้ media query เพื่อปรับขนาดใหม่เมื่อหน้าจอกว้างกว่า 280px */
+@media (max-width: 317px) {
+  .responsive-image {
+    width: 80px;
+    height: 210px;
+  }
+}
+
+
 </style>
