@@ -105,8 +105,8 @@ const decreaseProduct = () => {
                         </div>
                         <div class="flex space-x-4">
                             <img class="responsive-image" :src="`images/${targetProduct?.image}`" />
-                            <div class="flex flex-col justify-between">
-                                <div class="flex md:space-x-5 items-center">
+                            <div class="modalText flex flex-col justify-between">
+                                <div class="flex md:space-x-5 items-baseline">
                                     <p class="mr-7">{{ targetProduct?.itemDesc }}</p>
                                     <button :disabled="countProduct === 1 ? true : false" :class="countProduct === 1 ? 'cursor-not-allowed' : ''"
                                         @click="decreaseProduct">-</button>
@@ -119,14 +119,14 @@ const decreaseProduct = () => {
                                 </div>
                             </div>
                         </div>
-                        <div class="flex items-end space-x-2">
+                        <div class="modalText flex items-end space-x-2">
                             <input v-model.trim="codeDiscount" placeholder="DISCOUNT CODE" type="text"
                                 class="border border-b-black border-t-white border-x-white w-full" />
                             <button :disabled="disableApplyButton" :class="disableApplyButton ? 'cursor-not-allowed border-gray-400 text-gray-400':'border-black'" class="border w-1/5" @click="howMuchDiscount(countPrice)">
                                 {{ "apply".toUpperCase() }}
                             </button>
                         </div>
-                        <div>
+                        <div class="modalText">
                             <div class="flex justify-between">
                                 <p>{{ countProduct }} ITEM</p>
                                 <p>{{  countPrice?.toLocaleString('en-US') }} THB</p>
