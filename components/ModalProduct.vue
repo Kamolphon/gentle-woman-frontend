@@ -133,16 +133,16 @@ const decreaseProduct = () => {
                             </div>
                             <div class="flex justify-between">
                                 <p>DISCOUNT</p>
-                                <p>{{ discountPrice }} THB</p>
+                                <p>{{ discountPrice.toLocaleString('en-US') }} THB</p>
                             </div>
                             <div class="flex justify-between">
                                 <p>SHIPPING FEE</p>
-                                <p>{{ shippingPrice }} THB</p>
+                                <p>{{ shippingPrice.toLocaleString('en-US') }} THB</p>
                             </div>
                         </div>
                         <div class="flex pt-5 justify-between font-bold text-xl">
                             <p>{{ "total".toUpperCase() }}</p>
-                            <p>{{ totalPrice }} THB</p>
+                            <p>{{ totalPrice.toLocaleString('en-US') }} THB</p>
                         </div>
                     </div>
                     <div class="sticky md:absolute bottom-0 right-0 bg-black w-full h-9 md:h-12 items-center flex">
