@@ -18,8 +18,8 @@ const newArraivalsProducts = computed(()=>{
     <div id="NEW ARRIVALS" class="allproduct gentlewomensell w-full text-center">
         <div v-for="product in newArraivalsProducts">
             <div>
-                <p class="font-semibold">{{ product.category }}</p>
-                <p>{{ product.description }}</p>
+                <p class="font-semibold md:text-base category">{{ product.category }}</p>
+                <p class="md:text-sm description">{{ product.description }}</p>
             </div>
             <div class="flex text-left">
                 <div v-for="productItem in product.items" class="flex justify-center w-full">
@@ -31,4 +31,6 @@ const newArraivalsProducts = computed(()=>{
         </div>
     </div>
 </template>
-<style scoped></style>
+<style scoped>
+
+</style>

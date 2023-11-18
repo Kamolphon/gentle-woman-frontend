@@ -2,20 +2,61 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+    font-family: 'OsWald';
+    src: url('../fonts/Oswald_Complete/Fonts/Variable/Oswald-Variable.ttf') format('truetype');
+    /* เปลี่ยน path ตามที่อยู่ของไฟล์ font ของคุณ */
+    font-weight: normal;
+    font-style: normal;
+}
 
-@media (min-width: 768px) {
+body {
+    font-family: 'OsWald', sans-serif;
+}
+
+/* CSS สำหรับหน้าจอขนาดมากกว่า 1024px */
+@media (min-width: 1024px) {
     .allproduct {
         padding-top: 30px;
         padding-bottom: 30px;
     }
-    
+
     .gentlewomensell {
         padding-left: 90px;
         padding-right: 90px;
     }
-    
-    .productCard, .nownotforsell  {
+
+    .productCard,
+    .nownotforsell {
         padding-left: 20px;
         padding-right: 20px;
+    }
+
+}
+
+/* CSS สำหรับหน้าจอขนาดน้อยกว่าหรือเท่ากับ 1024px */
+@media (max-width: 1024px) {
+    .allproduct {
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+
+    .gentlewomensell,
+    .productCard,
+    .nownotforsell {
+        padding-left: 5px;
+        padding-right: 5px;
+    }
+
+    .description {
+        font-size: 8px;
+    }
+}
+
+
+@media (max-width: 768px) {
+
+    .description {
+        font-size: 8px;
     }
 }

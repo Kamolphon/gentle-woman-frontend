@@ -55,7 +55,9 @@ const selectSize = (size) => {
 <template>
     <div class="flex flex-col justify-between md:space-y-4 space-y-1">
         <img :src="`images/${props.image}`" />
-        <h1 class="font-semibold text-xs md:text-base">{{ props.productname }}</h1>
+        <div class="overflow-hidden text-ellipsis">
+            <h1 class="font-semibold line-clamp-1 lg:line-clamp-2 text-xs md:text-base">{{ props.productname }}</h1>
+        </div>
         <div class="flex flex-row justify-between text-center text-xs md:text-base">
             <div class="md:space-x-2 space-x-1">
                 <button :disabled="size.stock === 0 ? true : false" :class="{
