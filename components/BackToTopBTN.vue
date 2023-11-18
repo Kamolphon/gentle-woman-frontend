@@ -9,13 +9,15 @@ const scrollToTop = () => {
 
 </script>
 <template>
-<div>
-    <button id="backToTopBtn" class="fixed right-4 bottom-4 text-2xl font-semibold" @click="scrollToTop">
-        Back to top
-    </button>
-</div>
-
+    <div class="fixed right-4 bottom-4">
+        <button @click="scrollToTop" id="backToTopBtn" class="flex flex-col items-center text-sm md:text-lg space-y-3">
+            <img src="icons/arrowup.png" class="w-4" />
+            <p class="textAlignVer">Back to top</p>
+        </button>
+    </div>
 </template>
 <style scoped>
-
+.textAlignVer {
+    writing-mode: vertical-lr;
+}
 </style>
