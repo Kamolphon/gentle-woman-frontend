@@ -1,11 +1,11 @@
 <script setup>
 import { getProducts } from "./composable/getProducts.js"
 import Navbar from "./components/layouts/Navbar.vue";
-import NewArrivalsVue from "./components/allProducts/NewArrivals.vue";
-import GentleWomanClub from "./components/allProducts/GentleWomanClub.vue";
-import Footer from "./components/layouts/Footer.vue";
-import Editorials from "./components/allProducts/Editorials.vue";
-import BackToTopBTN from "./components/BackToTopBTN.vue";
+import NewArrivalsVue from "@/components/allProducts/NewArrivals.vue";
+import GentleWomanClub from "@/components/allProducts/GentleWomanClub.vue";
+import Footer from "@/components/layouts/Footer.vue";
+import Editorials from "@/components/allProducts/Editorials.vue";
+import BackToTopBTN from "@/components/BackToTopBTN.vue";
 const products = await getProducts()
 
 </script>
