@@ -31,7 +31,7 @@ const gentleWomanClubProducts  = computed(()=>{
             </div>
             <div class="flex text-left mt-8 md:mt-12">
                 <div v-for="productItem in product.items">
-                    <div class="flex"
+                    <div class="flex w-full"
                         v-if="productItem.itemDesc !== 'No Description'">
                         <div class="productCard">
                             <ItemDetail :image="productItem.image" :productId="productItem.productId" :productname="productItem.itemDesc" :allsize="productItem.allSize" :price="productItem.price"/>
