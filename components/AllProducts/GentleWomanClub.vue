@@ -8,7 +8,7 @@ const props = defineProps({
     }
 })
 
-const gentleWomanClubProducts  = computed(()=>{
+const gentleWomanClubProducts = computed(() => {
     return props.productForSell.filter(product => product.category === 'GENTLEWOMAN CLUB')
 })
 
@@ -19,22 +19,35 @@ const gentleWomanClubProducts  = computed(()=>{
             <div class="nownotforsell">
                 <p class="text-sm md:text-2xl category">{{ product.category }}</p>
                 <p class="md:text-sm description">{{ product.description }}</p>
-                    <div class="flex w-full h-full justify-between space-x-4 lg:space-x-8 mb-5">
-                        <div class="">
-                            <img :src="`images/${product.items[0].image}`" />
-                        </div>
-                        <div class="flex flex-col justify-between mb-0">
-                            <img :src="`images/${product.items[1].image}`" class="self-start" />
-                            <img :src="`images/${product.items[2].image}`" class="self-end" />
-                        </div>
+                <div class="flex w-full h-full justify-between space-x-4 lg:space-x-8 mb-5">
+                    <div class="">
+                        <img :src="`images/${product.items[0].image}`" />
                     </div>
+                    <div class="flex flex-col justify-between mb-0">
+                        <img :src="`images/${product.items[1].image}`" class="self-start" />
+                        <img :src="`images/${product.items[2].image}`" class="self-end" />
+                    </div>
+                </div>
             </div>
-            <div class="flex text-left mt-8 md:mt-12">
+            <!-- <div class="flex text-left mt-8 md:mt-12">
                 <div v-for="productItem in product.items">
                     <div class="flex w-full"
                         v-if="productItem.itemDesc !== 'No Description'">
                         <div class="productCard">
                             <ItemDetail :image="productItem.image" :productId="productItem.productId" :productname="productItem.itemDesc" :allsize="productItem.allSize" :price="productItem.price"/>
+                        </div>
+                    </div>
+                </div>
+            </div> -->
+            <div class="flex text-left mt-8 md:mt-12">
+                <div v-for="productItem in product.items" :key="productItem.productId">
+                    <div v-if="productItem.itemDesc !== 'No Description'">
+                        <div class="flex w-full">
+                            <div class="productCard">
+                                <ItemDetail :image="productItem.image" :productId="productItem.productId"
+                                    :productname="productItem.itemDesc" :allsize="productItem.allSize"
+                                    :price="productItem.price" />
+                            </div>
                         </div>
                     </div>
                 </div>
