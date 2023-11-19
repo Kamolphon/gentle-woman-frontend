@@ -1,6 +1,6 @@
 <script setup>
 import { ref } from "vue"
-import ModalProduct from "./ModalProduct.vue";
+import ModalProduct from "./ModalProduct";
 const isOpenModal = ref(false)
 const productId = ref(null)
 const selectedSize = ref(null)
