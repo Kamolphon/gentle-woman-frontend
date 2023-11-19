@@ -163,7 +163,7 @@ const checkoutButton = () => {
                                 <p>{{ shippingPrice.toLocaleString('en-US') }} THB</p>
                             </div>
                         </div>
-                        <div class="flex pt-5 justify-between font-semibold text-xl">
+                        <div class="flex py-5 justify-between font-semibold text-xl">
                             <p>{{ "total".toUpperCase() }}</p>
                             <p>{{ totalPrice.toLocaleString('en-US') }} THB</p>
                         </div>
