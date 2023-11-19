@@ -24,13 +24,13 @@ const props = defineProps({
     }
 })
 
-const openModalProduct = (mode,closeFinalOrder) => {
+const openModalProduct = (mode, closeFinalOrder) => {
     isOpenModal.value = !isOpenModal.value
     if (mode === 'close' && closeFinalOrder === 'closeFinalOrder') {
         selectedSize.value = null
         closeFinalProduct.value = 'closeFinalOrder'
         isShowFinalOrder.value = false
-    }else{
+    } else {
         closeFinalProduct.value = closeFinalOrder
     }
 }
@@ -39,7 +39,7 @@ const buyProduct = (id) => {
     if (selectedSize.value === null || selectedSize.value === undefined) {
         alert("Please select size")
     } else {
-        openModalProduct('open',"")
+        openModalProduct('open', "")
         productId.value = id
     }
 }
@@ -62,12 +62,15 @@ const selectSize = (size) => {
                 <button :disabled="size.stock === 0 ? true : false" :class="{
                     'border-black': size.stock > 0,
                     'border border-gray-400 text-gray-400 cursor-not-allowed': size.stock === 0,
-                    'border border-black bg-black text-white' : selectedSize === size.size
-                }" class="md:w-6 w-4 border buttonSize" v-for="size in allsize" :key="size.size" @click="selectSize(size.size)">
+                    'border border-black bg-black text-white': selectedSize === size.size
+                }" class="md:w-6 w-4 border buttonSize" v-for="size in allsize" :key="size.size"
+                    @click="selectSize(size.size)">
                     <div>{{ size.size }}</div>
                 </button>
             </div>
-            <p class="text-sm md:text-lg">{{ props.price.toLocaleString('en-US') }} THB</p>
+            <div class="overflow-hidden">
+                <p class="text-sm md:text-lg line-clamp-1">{{ props.price.toLocaleString('en-US') }} THB</p>
+            </div>
         </div>
         <div class="flex buybutton justify-between md:space-x-4 xl:space-x-8 space-x-1 pt-2 md:pt-0">
             <button class="w-1/2 py-0.5 border border-black">{{ "ADD TO BAG".toUpperCase() }}</button>
@@ -76,7 +79,8 @@ const selectSize = (size) => {
                 }}</button>
         </div>
     </div>
-    <ModalProduct :closeFinalOrder="closeFinalProduct" :showFinalOrders="isShowFinalOrder" :openModalValue="isOpenModal" :targetSize="selectedSize" :targetId="Number(productId)" @toggleModal="openModalProduct('close','closeFinalOrder')"
+    <ModalProduct :closeFinalOrder="closeFinalProduct" :showFinalOrders="isShowFinalOrder" :openModalValue="isOpenModal"
+        :targetSize="selectedSize" :targetId="Number(productId)" @toggleModal="openModalProduct('close', 'closeFinalOrder')"
         v-show="isOpenModal" />
 </template>
 <style scoped></style>

@@ -12,6 +12,20 @@ const gentleWomanClubProducts = computed(() => {
     return props.productForSell.filter(product => product.category === 'GENTLEWOMAN CLUB')
 })
 
+console.log(gentleWomanClubProducts.value);
+
+const filteredItemsWithDescription = computed(() => {
+    const noDescArr = []
+    for (const allItems of gentleWomanClubProducts.value) {
+        for (const des of allItems.items) {
+            des.itemDesc !== 'No Description' ? noDescArr.push(des) : ""
+        }
+    }
+    return noDescArr
+})
+console.log(filteredItemsWithDescription.value);
+
+
 </script>
 <template>
     <div id="GENTLEWOMAN CLUB" class="allproduct gentlewomansell w-full text-center">
@@ -30,12 +44,10 @@ const gentleWomanClubProducts = computed(() => {
                 </div>
             </div>
             <div class="flex text-left mt-8 md:mt-12">
-                <div v-for="productItem in product.items">
-                    <div class="flex w-full"
-                        v-if="productItem.itemDesc !== 'No Description'">
-                        <div class="productCard">
-                            <ItemDetail :image="productItem.image" :productId="productItem.productId" :productname="productItem.itemDesc" :allsize="productItem.allSize" :price="productItem.price"/>
-                        </div>
+                <div v-for="productItem in filteredItemsWithDescription" class="flex justify-center w-full" :key="productItem.itemDesc">
+                    <div class="productCard">
+                        <ItemDetail :image="productItem.image" :productId="productItem.productId"
+                            :productname="productItem.itemDesc" :allsize="productItem.allSize" :price="productItem.price" />
                     </div>
                 </div>
             </div>
