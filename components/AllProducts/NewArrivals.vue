@@ -17,7 +17,7 @@ const newArraivalsProducts = computed(()=>{
     <div id="NEW ARRIVALS" class="allproduct gentlewomansell w-full text-center">
         <div v-for="product in newArraivalsProducts">
             <div>
-                <p class="text-sm md:text-2xl category">{{ product.category }}</p>
+                <p class="text-sm md:text-lg category">{{ product.category }}</p>
                 <p class="md:text-sm description">{{ product.description }}</p>
             </div>
             <div class="flex text-left">

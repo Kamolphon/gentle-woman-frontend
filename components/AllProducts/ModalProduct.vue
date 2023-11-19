@@ -120,7 +120,7 @@ const checkoutButton = () => {
                     class="relative mx-3 w-96 h-96 md-size overflow-y-auto bg-white text-left shadow-xl transition-all sm:w-full sm:max-w-lg">
                     <div class="px-9 mt-5 flex flex-col md:space-y-10 space-y-5">
                         <div class="flex justify-center items-center">
-                            <h1 class="md:text-2xl">SHOPPING BAG</h1>
+                            <h1 class="md:text-lg">SHOPPING BAG</h1>
                             <button class="absolute right-3 text-2xl" @click="$emit('toggleModal')">X</button>
                         </div>
                         <div class="flex space-x-4">
@@ -163,7 +163,7 @@ const checkoutButton = () => {
                                 <p>{{ shippingPrice.toLocaleString('en-US') }} THB</p>
                             </div>
                         </div>
-                        <div class="flex md:text-2xl py-5 justify-between font-semibold text-xl">
+                        <div class="flex py-5 justify-between font-semibold text-2xl">
                             <p>{{ "total".toUpperCase() }}</p>
                             <p>{{ totalPrice.toLocaleString('en-US') }} THB</p>
                         </div>
@@ -175,7 +175,7 @@ const checkoutButton = () => {
                 <div v-show="propShowFinalOrders"
                     class="absolute mx-3 w-96 h-96 md-size overflow-y-auto bg-white text-left shadow-xl transition-all sm:w-full sm:max-w-lg">
                     <div class="px-9 mt-5 flex flex-col md:space-y-10 space-y-5">
-                        <div class="flex md:text-2xl justify-center items-center">
+                        <div class="flex md:text-lg justify-center items-center">
                             <h1>ORDERS</h1>
                         </div>
                         <div>
@@ -196,7 +196,7 @@ const checkoutButton = () => {
                                         <p>SHIPPING FEE</p>
                                         <p>{{ shippingPrice.toLocaleString('en-US') }} THB</p>
                                     </div>
-                                    <div class="md:text-2xl flex py-5 justify-between font-semibold text-xl">
+                                    <div class="flex py-5 justify-between font-semibold text-2xl">
                                         <p>{{ "total".toUpperCase() }}</p>
                                         <p>{{ totalPrice.toLocaleString('en-US') }} THB</p>
                                     </div>
