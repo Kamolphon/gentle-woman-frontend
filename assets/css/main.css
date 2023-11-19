@@ -74,6 +74,6 @@ body {
     }
 }
 
-.description, .descriptionItem, .buybutton, .buttonSize, .modalText {
+.description, .descriptionItem, .buybutton, .buttonSize, .modalText, .price {
     font-weight: 300;
 }

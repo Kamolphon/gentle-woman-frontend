@@ -68,7 +68,7 @@ const selectSize = (size) => {
                     <div>{{ size.size }}</div>
                 </button>
             </div>
-            <div class="overflow-hidden">
+            <div class="overflow-hidden price">
                 <p class="text-sm md:text-2xl line-clamp-1">{{ props.price.toLocaleString('en-US') }} THB</p>
             </div>
         </div>
