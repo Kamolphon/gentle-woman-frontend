@@ -39,7 +39,7 @@ body {
 
 @media (max-width: 1024px) {
     .allproduct {
-        padding-top: 20px;
+        padding-top: 50px;
     }
 
     .description {
@@ -56,6 +56,11 @@ body {
 }
 
 @media (max-width: 768px) {
+
+    .allproduct {
+        padding-top: 40px;
+    }
+
 
     .description, .descriptionItem, .buybutton, .buttonSize {
         font-size: 10px;
