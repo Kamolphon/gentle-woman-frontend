@@ -69,7 +69,7 @@ const selectSize = (size) => {
                 </button>
             </div>
             <div class="overflow-hidden">
-                <p class="text-sm md:text-lg line-clamp-1">{{ props.price.toLocaleString('en-US') }} THB</p>
+                <p class="text-sm md:text-2xl line-clamp-1">{{ props.price.toLocaleString('en-US') }} THB</p>
             </div>
         </div>
         <div class="flex buybutton justify-between md:space-x-4 xl:space-x-8 space-x-1 pt-2 md:pt-0">
