@@ -1,7 +1,6 @@
-const ROOT_API = import.meta.env.VITE_ROOT_API
 const getProducts = async () => {
     try{
-        const response = await fetch(`${ROOT_API}/Products`)
+        const response = await fetch(`https://gentle-woman-db.onrender.com/Products`)
         if (!response.ok) {
             throw new Error(`HTTP Error! Status: ${response.status}`);
         } else {
