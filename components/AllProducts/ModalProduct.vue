@@ -169,7 +169,7 @@ const checkoutButton = () => {
                         </div>
                     </div>
                     <div class="sticky md:absolute bottom-0 right-0 bg-black w-full h-9 md:h-12 items-center flex">
-                        <button type="button" @click="checkoutButton" class="w-full text-white">Check out</button>
+                        <button type="button" @click="checkoutButton" class="w-full text-white">{{"Check out".toUpperCase()}}</button>
                     </div>
                 </div>
                 <div v-show="propShowFinalOrders"
